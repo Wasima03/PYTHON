@@ -99,6 +99,12 @@ for i in range(1,10):
     if div == 0 :
         print(i)
 """
+#25
+n=float(input("Introduce un número: "))
+while n > 1:
+    n2 = n/2
+    print(round((n2),2))
+
 
 
 
