@@ -1,3 +1,90 @@
+"""
+#1
+for i in range(0,10):
+    print(i)
+
+#2
+for i in range(0,50,2):
+    print(i)
+
+#3
+num=int(input("Introduce un número: "))
+for i in range(1,6):
+    print(num*i)
+
+#4
+for i in range(0,1000):
+    if (i%7 == 0):
+        print(i)
+
+# 5
+n=int(input("Introduce un número: "))
+if n%2 == 0 :
+   print(n,"es un número par")
+else:
+   print(n,"es un número impar")
+
+#6
+n=int(input("Introduce un número: "))
+if n%3 == 0:
+    print(n,"es divisible por 3")
+else:
+    print(n,"no es divisible por 3")
+
+#7
+p=float(input("Introduce el precio: "))
+print(((p*0.21)+p),"€")
+
+#8
+c=float(input("Introduce la cantidad: "))
+m=int(input("Introduce los meses: "))
+print(round((c/m),2),"€")
+
+#9
+import random
+print(random.randint(0,50))
+
+#10
+import random
+print(random.randint(1,6))
+print(random.randint(0,6))
+
+#11
+import random
+d1=0
+d2=1
+ct=0
+while d1 != d2:
+    d1=random.randint(1,6)
+    d2=random.randint(1,6)
+    ct += 1
+print("Se han lanzado los dados",ct,"veces")
+
+
+#12
+import random
+d=int(input("Introduce el núemro de dados: "))
+c=int(input("Introduce el número de caras: "))
+ct=0
+while ct != d:
+    print(random.randint(1,c))
+    ct += 1
+
+
+#13
+import random
+ct=0
+c=1
+d = int(input("Introduce el núemro de dados: "))
+while c%2 != 0:
+    c=int(input("Introduce el número de caras: "))
+
+while ct != d:
+        print(random.randint(1,c))
+        ct += 1
+"""
+import math
+
 #14
 """
 import random
@@ -54,11 +141,11 @@ n1=int(input("Introduce un núemro: "))
 n2=int(input("Introduce un núemro: "))
 n3=int(input("Introduce un núemro: "))
 
+numeros =[n1,n2,n3]
+numeros.sort()
 
-if (n1<n2) and (n1<n3):
-    print(n1)
-elif ()
-
+for i in numeros:
+    print(i)
 
 
 #21
@@ -72,38 +159,62 @@ if(div <= 1):
 else:
     print("El número",n,"no es primo")
 
+
 #22
 import random
 primo=False
-div=0
 n=0
 while not primo:
     n=random.randint(10000000,50000000)
-    for i in range(2,n):
-        if n % i == 0:
-            div += 1
-    if div == 0:
-        primo = True
-        print(n)
+    p=True
+    if n<2 or n%2==0 or n==2:
+        p=False
     else:
-        primo=False
+        for i in range (3,int(math.sqrt(n))+1):
+            if i % n == 0:
+                p=False
+                break
+    if p:
+        primo=True
+        print("Número primo: ", n)
 
 #23
 import math
-div=0
-for i in range(1,10):
-    n=int(math.sqrt(i))
-    for j in range(2,n):
-        if n%j == 0:
-            div += 1
-    if div == 0 :
+for i in range(3,101,2):
+    for j in (i,int(math.sqrt(i))):
+        primo = False
+        if i % j != 0:
+            primo = True
+            break
+    if primo:
         print(i)
+
+
+
+#24
+import math
+n1=int(input("Introduce un número: "))
+n2=int(input("Introduce otro número: "))
+primo = False
+for i in range(n1,(n2+1)):
+    if i<2:
+        primo=False
+    else:
+        primo=True
+        for j in range(2,int(math.sqrt(i))+1):
+            if i % j == 0:
+                primo = False
+                break
+        if primo:
+            print(i)
+
+
 """
 #25
 n=float(input("Introduce un número: "))
 while n > 1:
-    n2 = n/2
-    print(round((n2),2))
+    n= n / 2
+    print(round(n,2))
 
 
 
