@@ -225,7 +225,7 @@ area=3.14159 * (r*r)
 long=2*3.14159*r
 print("Área de la circunferencia:",round(area,5))
 print("Longitud de la circunferencia",round(long,5))
-"""
+
 
 #17
 temp=(input("Introduce la temperatura, indicando la unidad: "))
@@ -233,8 +233,55 @@ unidad=temp[len(temp)-1]
 cnt=temp[:(len(temp)-1)]
 print(unidad,cnt)
 if unidad == "C":
+    print(temp,"=",(float(cnt)*1.8+32),"ºF")
+    print(temp,"=",(float(cnt)+273.15),"ºK")
+elif unidad=="F":
+    print(temp,"=",(float(cnt)-32)/1.8,"ºC")
+    k=5/9*(float(cnt)-32)+273.15
+    print(temp,"=",k,"ºK")
+elif unidad=="K":
+    print(temp,"=",float(cnt)-273.15,"ºC")
+    f=1-8*(float(cnt)-273.15)+32
+    print(temp,"=",f,"ºF")
+else:
+    print("Unidad no identificada.")
 
 
+#18
+sueldo=float(input("Introduce tu sueldo anual: "))
+if sueldo >0 and sueldo<12450:
+    importe=sueldo*0.19
+    print("Te responde una retención del 19%.")
+    print("Es decir,",importe,"€")
+    print("Tu sueldo neto:",sueldo-importe)
+elif sueldo>12450 and sueldo<20200:
+    importe = sueldo * 0.24
+    print("Te responde una retención del 24%.")
+    print("Es decir,", importe, "€")
+    print("Tu sueldo neto:", sueldo - importe)
+elif sueldo>20200 and sueldo<35200:
+    importe = sueldo * 0.3
+    print("Te responde una retención del 30%.")
+    print("Es decir,", importe, "€")
+    print("Tu sueldo neto:", sueldo - importe)
+elif sueldo>35200 and sueldo<60000:
+    importe = sueldo * 0.37
+    print("Te responde una retención del 37%.")
+    print("Es decir,", importe, "€")
+    print("Tu sueldo neto:", sueldo - importe)
+elif sueldo>60000 and sueldo<300000:
+    importe = sueldo * 0.45
+    print("Te responde una retención del 45%.")
+    print("Es decir,", importe, "€")
+    print("Tu sueldo neto:", sueldo - importe)
+else:
+    importe = sueldo * 0.47
+    print("Te responde una retención del 47%.")
+    print("Es decir,", importe, "€")
+    print("Tu sueldo neto:", sueldo - importe)
+"""
+
+#9,10,11
 
 
 
