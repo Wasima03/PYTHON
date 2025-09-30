@@ -209,13 +209,13 @@ for i in range(n1,(n2+1)):
             print(i)
 
 
-"""
+
 #25
 n=float(input("Introduce un número: "))
 while n > 1:
     n= n / 2
     print(round(n,2))
-
+"""
 
 
 

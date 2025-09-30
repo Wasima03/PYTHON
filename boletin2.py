@@ -69,8 +69,179 @@ for i in range (2,n):
     if n%i == 0:
         div.append(i)
 print("Divisores del número",n,":",div)
+
+
+# 9-10-11
+c=0
+t=0
+num=[]
+n=" "
+while n != "FIN":
+    n=input("Introduce un número entre el 1 y el 100: ")
+    if n<"0" or n>"100":
+        print("Opcion no valida")
+    else:
+        t =+ int(n)
+        num.append(n)
+        c =+ 1
+print("Número de entradas válidas: ",c-1)
+print("Media aritmética: ", t/c)
+print("Mayor núemero: ", )
+
+
+
+#12
+import random
+n=random.randint(1,50)
+c=0
+intento=0
+while intento != n:
+    intento = int(input("Introduce un núemero: "))
+
+    if intento<n:
+        print("Te has quedado corto.")
+    else:
+        print("Te has pasado.")
+    c += 1
+    if c>5:
+        print("Se han alcanzado un número máximo de intentos.")
+        break
+if intento ==n:
+    print("Enhorabuena, has acertado")
+
+#13
+import random
+n=random.randint(1,50)
+c=0
+intento=0
+while intento != n:
+    intento = int(input("Introduce un núemero: "))
+
+    if intento<n:
+        print("Te has quedado corto.")
+    else:
+        print("Te has pasado.")
+    c += 1
+
+print("Enhorabuena, has acertado")
+print("Número de intentos:",c)
+
+
+#14
+c = 0
+intento = 0
+import random
+n=random.randint(1,50)
+
+while intento != n:
+    intento = int(input("Introduce un núemero: "))
+
+    if intento<n:
+        print("Te has quedado corto.")
+    else:
+        print("Te has pasado.")
+    c += 1
+
+print("Enhorabuena, has acertado")
+print("Número de intentos:",c)
+print()
+
+jugar=input("Quieres volver a jugar?. Escribe 'Y' para jugar o 'N' para cancelar.")
+if jugar == "Y":
+    c=0
+    intento=0
+    while intento != n:
+        intento = int(input("Introduce un núemero: "))
+
+        if intento < n:
+            print("Te has quedado corto.")
+        else:
+            print("Te has pasado.")
+        c += 1
+
+    print("Enhorabuena, has acertado")
+    print("Número de intentos:", c)
+elif jugar == "N":
+    print("Como quieras.")
+else:
+    print("No te he entendido.")
+
+
+
+#15
+import random
+c = 0
+intento = 0
+
+nIntentos=int(input("Indica el número máximo de intentos: "))
+nMaximo=int(input("Indica el número máximo: "))
+n=random.randint(1,nMaximo)
+
+while intento != n:
+    intento = int(input("Introduce un núemero: "))
+    c += 1
+    if c > 5:
+        print("Número de intentos máximo alcanzado.")
+        break
+    if intento<n:
+        print("Te has quedado corto.")
+    elif intento>n:
+        print("Te has pasado.")
+    else:
+        print("Enhorabuena, has acertado")
+
+
+print()
+
+jugar=input("Quieres volver a jugar?. Escribe 'Y' para jugar o 'N' para cancelar.")
+if jugar == "Y":
+    c=0
+    intento=0
+    n = random.randint(1, nMaximo)
+    while intento != n:
+        intento = int(input("Introduce un núemero: "))
+        c += 1
+        if c > nIntentos:
+            print("Número de intentos máximo alcanzado.")
+            break
+        if intento < n:
+            print("Te has quedado corto.")
+        elif intento>n:
+            print("Te has pasado.")
+        else:
+            print("Enhorabuena, has acertado")
+
+
+elif jugar == "N":
+    print("Como quieras.")
+else:
+    print("No te he entendido.")
+
+
+#16
+import math
+r=float(input("Introduce el radio de una circuferencia: "))
+area=3.14159 * (r*r)
+long=2*3.14159*r
+print("Área de la circunferencia:",round(area,5))
+print("Longitud de la circunferencia",round(long,5))
 """
-#9
+
+#17
+temp=(input("Introduce la temperatura, indicando la unidad: "))
+unidad=temp[len(temp)-1]
+cnt=temp[:(len(temp)-1)]
+print(unidad,cnt)
+if unidad == "C":
+
+
+
+
+
+
+
+
+
 
 
 
