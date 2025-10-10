@@ -1,3 +1,4 @@
+"""
 lista=[]
 lista2=list()
 lista3=[2,5,6.5,7,8,12,7,12,5,5]
@@ -43,7 +44,7 @@ print(random.choice(lista6))
 print(random.sample(lista6,3))  #elige tres elementos diferentes
 random.shuffle(lista6) #no se puede meter en el print, porque no devuelve nada
 print(lista6)
-
+"""
 
 
 
