@@ -64,13 +64,13 @@ if num==num2:
     print("El número es capicúa")
 else:
     print("El número no es capicúa")
-"""
+
 #6
 import math
 primos=[]
 primo=False
-for i in range(3,51,2):
-    for j in (2,math.sqrt(i)+1):
+for i in range(1,51,2):
+    for j in (2,int(math.sqrt(i))+1):
         if i%j!=0:
             primo=True
             break
@@ -80,6 +80,13 @@ for i in range(3,51,2):
 for i in primos:
     print(i,"Raiz cuadrada:",math.sqrt(i),"Cuadrado:",i*i,"Cubo:",(i*i*i))
     print(" ")
+"""
+import math
+
+for i in range(1,51,2):
+    for j in (2,int(math.sqrt(i))):
+        if i%j!=0:
+            print(i)
 
 
 
