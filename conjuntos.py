@@ -4,6 +4,7 @@ profesPrimero={"Ana","Juan Carlos","Sacho","Natalia"}
 print(profesPrimero)
 profesSegundo = set(["Agustin","Ana","Javier","Natalia"])
 print(profesSegundo)
+conjuntoVacio=set()
 
 if "Ana" in profesPrimero:
     print("Ana da clase en primero")
