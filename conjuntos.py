@@ -1,5 +1,7 @@
 #no admiten duplicados
 #no tienen posiciones
+#funciones que comparan dos conjuntos
+
 profesPrimero={"Ana","Juan Carlos","Sacho","Natalia"}
 print(profesPrimero)
 profesSegundo = set(["Agustin","Ana","Javier","Natalia"])
