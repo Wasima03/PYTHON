@@ -1,4 +1,4 @@
-"""
+
 #1
 num=int(input("Introduce un número: "))
 fct=1
@@ -166,7 +166,7 @@ for i in range(num):
     for j in range(num):
         print(caracter, end="")
     print()
-"""
+
 #14
 hora=input("Introduce una hora: ")
 

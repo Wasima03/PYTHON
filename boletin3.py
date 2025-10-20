@@ -1,5 +1,5 @@
 #1-2
-"""
+
 p1=input("Introduce la contrasña: ")
 p2=input("Vuelve a introducir la contraseña: ")
 ct=0
@@ -149,4 +149,3 @@ if len(fecha)==10 and fecha[2:3]=="/" and fecha[5:6]=="/" and fecha.replace("/",
         else:
             print("FECHA NO VÁLIDA")
 
-"""

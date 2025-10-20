@@ -1,4 +1,4 @@
-"""
+
 #tienen posiciones
 #matrices, replace
 #funciones random
@@ -47,9 +47,9 @@ lista6=["Jorge","Pepe","Ana","Manoli","Roberto","Pilar"]
 print(random.choice(lista6))#devuelve un elemento aleatorio
 print(random.sample(lista6,3))  #elige tres elementos diferentes
 random.shuffle(lista6) #no se puede meter en el print, porque no devuelve nada
-mezcla los elementos de la lista aleatoriamente
+#mezcla los elementos de la lista aleatoriamente
 print(lista6)
-"""
+
 
 
 

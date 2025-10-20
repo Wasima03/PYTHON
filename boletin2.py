@@ -1,4 +1,4 @@
-"""
+
 #1
 c1=input("Introduce la cadena 1: ")
 c2=input("Introduce la cadena 2: ")
@@ -279,7 +279,7 @@ else:
     print("Te responde una retención del 47%.")
     print("Es decir,", importe, "€")
     print("Tu sueldo neto:", sueldo - importe)
-"""
+
 
 #9,10,11
 

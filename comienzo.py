@@ -1,13 +1,12 @@
 #comentario
-"""comentario
 print("Hola mundo")
 edad =56
 print(edad)
 MESES=12 #constante
 
-% resto
-// cociente de división
-** potencias
+#% resto
+#// cociente de división
+#** potencias
 
 texto="hola" + " "+ "mundo"
 print(texto)
@@ -21,8 +20,8 @@ print(precio, "€")
 print("argumentos", end=" ")
 print("en linea seguida")
 print("quitar el espacio", "al imprimir",sep="")
-end-salto de línea
-sep=espacio entre sentencias
+#end-salto de línea
+#sep=espacio entre sentencias
 
 
 nombre=input("Dime tu nombre: ")
@@ -94,7 +93,7 @@ while d1 != d2 :
     d2=random.randint(1, 6)
     intento += 1
 print("Se han lanzado los dados", intento, "veces")
-"""
+
 
 
 

@@ -42,7 +42,6 @@ nombre,apellidos,edad,alumno,profe=profesor
 print(nombre,alumno)
 
 
-import random
 
 
 
