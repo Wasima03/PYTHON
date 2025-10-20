@@ -46,7 +46,7 @@ for i in palabras:
     if len(aux) >=4:
         contador+=1
 print(contador)
-"""
+
 
 #5
 import math
@@ -59,8 +59,19 @@ print("Mayor:",max(num))
 print("Menor:",min(num))
 for i in num:
     veces.append(num.count(i))
-print("Numero que mas se repite:")
+print("Numero que mas se repite:",veces.index(max(veces)))
 print("Veces:",max(veces))
+"""
+
+#6
+num=(input("Introduce un número: "))
+veces=set()
+
+for i in num:
+    if i not in veces:
+        print("Número",i,":",num.count(i))
+        veces.add(i)
+
 
 
 
