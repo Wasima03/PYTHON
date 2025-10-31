@@ -1,4 +1,4 @@
-"""
+
 #1 JUEGO DE MONEDAS
 import random
 
@@ -30,7 +30,7 @@ print("Se han tenido que lanzar las monedas",contador,"veces")
 
 print("Cara ha salido un porcentaje de:",round(cara/total*100,2),"%")
 print("Cruz ha salido un porcentaje de:",round(cruz/total*100,2),"%")
-"""
+
 
 
 #DADO TRUCADO
