@@ -53,7 +53,7 @@ for i in range(3,100,2):
 for i in range (51,70,2):
     if(mifuncion(i)==True and mifuncion(i+1)==True):
         print("Pareja:",i,"y",(i+1))
-"""
+
 
 #funcion con argumentos por defecto
 def saludo(nombre,mensaje="hola",despedida="Hasta la vista"):  #si no ponemos nada, mensaje toma el valor por defecto puesto ahi, siempre van al final
@@ -81,6 +81,8 @@ def devuelveTresEnteros():
 
 num1,num2,num3=devuelveTresEnteros()
 print(num1,num2,num3,sep=" - ")
+"""
+
 
 
 
