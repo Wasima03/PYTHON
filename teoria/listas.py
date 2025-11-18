@@ -2,7 +2,7 @@
 #tienen posiciones
 #matrices, replace
 #funciones random
-"""
+
 lista=[]
 lista2=list()
 lista3=[2,5,6.5,7,8,12,7,12,5,5]
@@ -59,7 +59,7 @@ for i in range(len(lista)):
 
 for i, nombre in enumerate(lista): #es una mezcla de los dos fors anteriores
     print(i,"-",nombre)
-"""
+
 
 #los valores se pasan como copias, el 1(original) se guarda pero el 2 se modifica
 numero1=7

@@ -1,5 +1,5 @@
 from zope.interface.common.interfaces import IValueError
-"""
+
 try:
     denominador=int(input("Introduce el denominador:"))
     x=45/denominador
@@ -27,7 +27,6 @@ y=int(input("Introduce un núemero entero positivo"))
 
 x=int(input("Introduce un núemero entero positivo"))
 assert (x!=5 and n>0),"El número no es igual a 1" #si no es igual que 1 salta la excepcion(cuando es falso), puedo poner un mensaje o no o parentesiss o no
-"""
 
 nombre="Wasima"
 edad=19

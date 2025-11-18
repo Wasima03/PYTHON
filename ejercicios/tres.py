@@ -1,4 +1,4 @@
-from dos import resultado2
+from ejercicios.ejercicios import resultado2
 
 frase= input("Introduce una frase: ")
 letra=input("Letra  a mantener: ")

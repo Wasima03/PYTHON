@@ -1,4 +1,4 @@
-""""
+
 def mifuncion():
     otroTexto="Hola mundo cruel"
     texto="Hola otra vwz"
@@ -81,9 +81,18 @@ def devuelveTresEnteros():
 
 num1,num2,num3=devuelveTresEnteros()
 print(num1,num2,num3,sep=" - ")
-"""
 
 
+n=10
+if n in range (0,255):
+    print("n esta entre 0 y 255")
+
+
+if isinstance(5.5,int):
+    print("n es un entero") #para verificar que una variable sea de un tipo especifico/se puede poner int,float,str,boolen,set,tuple
+
+if not isinstance([1,2,3,4],list):
+    print("no es una lista")
 
 
 

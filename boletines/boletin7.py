@@ -1,7 +1,6 @@
 import math
 import random
 
-"""
 #1-2
 from importlib.util import source_hash
 
@@ -120,7 +119,7 @@ try:
 
 except IndexError:
     print("Posicion no válida")
-"""
+
 #8
 for i in range(0,5):
     print(random.randint(0,1), end=" ")
