@@ -67,3 +67,23 @@ print(mascota2.numPerros)
 mascota3.sobrecargargada("Hola")
 mascota3.sobrecargargada([1,2,3])
 mascota3.sobrecargargada2(1,"hola")
+
+
+
+class Cuenta:
+    def __init__(self,titular,saldo):
+        self.__titular=titular
+        self.__saldo=saldo
+
+    def __add__(self,cuenta):
+        self.__saldo=self.__saldo+cuenta.__saldo
+        self.__titular = self.__titular+cuenta.__titular
+        return self
+
+
+c1 = Cuenta("Waasima",123)
+c2 = Cuenta("Pepe",456)
+print(c1.__add__(c2))
+
+
+#str,count,len,init,del,gt,add
