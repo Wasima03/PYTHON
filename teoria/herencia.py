@@ -27,9 +27,6 @@ print(objetoB.getNombre())
 -----------------------------------------------------------
 """
 
-
-
-
 """class ClaseA:
     def __init__(self):   #constructor
         self.nombre="Clase A"
@@ -54,11 +51,12 @@ objeetob=ClaseB()
 print(objetoa.nombre)
 print(objeetob.nombre)
 print(objeetob.subclase)
+--------------------------------------------------
 """
 
 
 
-#HERENCIA MÚLTIPLE
+"""#HERENCIA MÚLTIPLE
 
 class ClaseA:
     def __init__(self):   #constructor
@@ -77,7 +75,11 @@ class ClaseB():
 
 class ClaseC(ClaseA,ClaseB):  #como ponemos la clase a primero, si hay atributos iguales, se va a coger el de la primera clase
     def queSoy(self):
-        print("Y además soy clase B")
+        #ClaseA.queSoy(self)
+        super().queSoy() #el super llama a la clase de la izquierda, es equibvalente a la linea de arriba
+
+        ClaseB.queSoy(self)
+        print("Y además soy clase C")
     pass
 class ClaseD(ClaseB,ClaseA): #como d se pone primero, coge el nombre de la clase b
     pass
@@ -93,3 +95,75 @@ objetod=ClaseD()
 print(objetod.nombre)
 objetoc.queSoy()
 objetod.queSoy()
+------------------------------------------------------
+"""
+
+
+
+#CLASES ABSTRACTAS
+
+from abc import abstractmethod #hay que importar el metodo para usar abstracto
+from abc import ABCMeta
+
+class ClaseAbstracta(metaclass=ABCMeta): #tiene que derivar de abcMeta y hay que importarlo para que no deje instanciar ningun objeto
+
+    def metodoChorra(self):
+        print("Hola, hola")
+
+
+    @abstractmethod
+    def metodoAbstracto(self):
+        pass
+
+
+nuevo=ClaseAbstracta()
+nuevo.metodoChorra()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
