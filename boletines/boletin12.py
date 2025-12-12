@@ -18,10 +18,10 @@ class gestionNotas():
             nota = f"""
                     Informe Nota
                     ==========================
-                    Título: {i.getTitulo}
-                    Descripción: {i.getDescripcion}
-                    Color: {i.getColor}
-                    Fecha: {i.getFecha}
+                    Título: {i.getTitulo()}
+                    Descripción: {i.getDescripcion()}
+                    Color: {i.getColor()}
+                    Fecha: {i.getFecha()}
                     ==========================
                     """
             print(nota)
@@ -30,14 +30,13 @@ class gestionNotas():
     def eliminarNota(self,titulo):
         esta=False
         for i in self.__lista:
-            if i.getTitulo==titulo:
+            if i.getTitulo()==titulo:
                 self.__lista.remove(i)
                 esta=True
         if(esta):
             print("Nota eliminada")
         else:
             print("Nota no encontrada")
-
 
 
 class Notas(gestionNotas):
@@ -48,16 +47,16 @@ class Notas(gestionNotas):
         self.__fecha=fecha
 
     def getTitulo(self):
-        return self.titulo
+        return self.__titulo
 
     def getDescripcion(self):
-        return self.descripcion
+        return self.__descripcion
 
     def getColor(self):
-        return self.color
+        return self.__color
 
     def getFecha(self):
-        return self.fecha
+        return self.__fecha
 
 
 

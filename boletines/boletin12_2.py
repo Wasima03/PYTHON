@@ -1,35 +1,55 @@
-from abc import abstractmethod
+from abc import abstractmethod, ABC
 from abc import ABCMeta
-class gestionNotas(metaclass=ABCMeta):
-    def _init__(self,lista):
-        self.__lista=lista
+
+class NotaBase(metaclass=ABCMeta):
+    colores = {"amarillo", "verde", "blanco", "cyan"}
+    def __init__(self,titulo, descripcion, color, fecha):
+        self._titulo = titulo
+        self._descripcion = descripcion
+        if color not in self.colores:
+            self._color="amarillo"
+        else:
+            self._color = color
+        self._fecha = fecha
+
+    @abstractmethod
+    def listarNotas(self):
+        pass
+
+class gestionNotas():
+    listaNormal=[]
+    listaUrgente=[]
+    listaGlobal=[]
+    def __init__(self):
+
         pass
     def crearNota(self,titulo, descripcion, color, fecha):
         colores = {"amarillo","verde","blanco","cyan"}
         nota=""
-        if len(set(color) & colores) == 1:
-            c=color
-        else:
-            c="amarillo"
-        if c== "rojo":
+        if color== "rojo":
             nota=notaUrgente(titulo,descripcion,fecha)
+            self.listaUrgente.append(nota)
         else:
-            nota = Notas(titulo,descripcion,c,fecha)
-        self.__lista.append(nota)
+            nota = NotaNormal(titulo,descripcion,color,fecha)
+            self.listaNormal.append(nota)
+        self.listaGlobal.append(nota)
         print("Nota creada")
 
-
-    @abstractmethod
-    def listarNota(self):
-        for i in self.__lista:
-            i.listarNota
-
+    def listarNotas(self):
+        for i in self.listaUrgente:
+            i.listarNotas()
+        for j in self.listaNormal:
+            j.listarNotas()
 
     def eliminarNota(self,titulo):
         esta=False
-        for i in self.__lista:
-            if i.getTitulo==titulo:
-                self.__lista.remove(i)
+        for i in self.listaGlobal:
+            if i.getTitulo()==titulo:
+                self.listaGlobal.remove(i)
+                if i.getColor()=="rojo":
+                    self.listaUrgente.remove(i)
+                else:
+                    self.listaNormal.remove(i)
                 esta=True
         if(esta):
             print("Nota eliminada")
@@ -38,72 +58,66 @@ class gestionNotas(metaclass=ABCMeta):
 
 
 
-class Notas(gestionNotas):
+class NotaNormal(NotaBase):
     def __init__(self,titulo,descripcion,color,fecha):
-        self.__titulo=titulo
-        self.__descripcion=descripcion
-        self.__color=color
-        self.__fecha=fecha
+        super().__init__(titulo, descripcion, color, fecha)
 
     def getTitulo(self):
-        return self.__titulo
+        return self._titulo
 
     def getDescripcion(self):
-        return self.__descripcion
+        return self._descripcion
 
     def getColor(self):
-        return self.__color
+        return self._color
 
     def getFecha(self):
-        return self.__fecha
-    def listarNota(self):
+        return self._fecha
+    def listarNotas(self):
         nota = f"""
                     Informe Nota
                     ==========================
-                    Título: {self.__titulo}
-                    Descripción: {self.__descripcion}
-                    Color: {self.__color}
-                    Fecha: {self.__fecha}
+                    Título: {self._titulo}
+                    Descripción: {self._descripcion}
+                    Color: {self._color}
+                    Fecha: {self._fecha}
                     ==========================
                     """
         print(nota)
 
-class notaUrgente(gestionNotas):
+class notaUrgente(NotaBase):
     def __init__(self,titulo,descripcion,fecha):
-        self.__titulo=titulo
-        self.__descripcion=descripcion
-        self.__color="rojo"
-        self.__fecha=fecha
+        super().__init__(titulo,descripcion,"rojo",fecha)
 
     def getTitulo(self):
-        return self.__titulo
+        return self._titulo
 
     def getDescripcion(self):
-        return self.__descripcion
+        return self._descripcion
 
     def getColor(self):
-        return self.__color
+        return self._color
 
     def getFecha(self):
-        return self.__fecha
+        return self._fecha
 
-    @abstractmethod
-    def listarNota(self):
+    def listarNotas(self):
         nota = f"""
-            Informe Nota *URGENTE*
-            ==========================
-            Título: {self.__titulo}
-            Descripción: {self.__descripcion}
-            Color: {self.__color}
-            Fecha: {self.__fecha}
-            ==========================
+                    Informe Nota *URGENTE*
+                    ==========================
+                    Título: {self._titulo}
+                    Descripción: {self._descripcion}
+                    Color: {self._color}
+                    Fecha: {self._fecha}
+                    ==========================
             """
         print(nota)
 
 l=[]
-g=gestionNotas(l)
-g.crearNota("Interfaces","Notable","10-12-2025")
-"""g.crearNota("Acceso a Datos","Notable","vg","15-12-2025")
-g.listarNota()
+g=gestionNotas()
+g.crearNota("Interfaces","Notable","cyan","10-12-2025")
+g.crearNota("Acceso a Datos","Notable","vg","15-12-2025")
+g.crearNota("Python","Notable","rojo","15-12-2025")
+g.listarNotas()
 g.eliminarNota("Interfaces")
-g.listarNota()"""
+g.listarNotas()
