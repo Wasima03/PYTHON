@@ -91,6 +91,7 @@ class Grupo:
             print("Alumno no encontrado")
 
     def setModulo(self):
+        pass
 
     def getAlumnos(self):
         return self.listaAlumnos
