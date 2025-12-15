@@ -11,12 +11,13 @@ class Persona(metaclass=ABCMeta):
         return self.__apellido
 
 class Alumno(Persona):
-    menorEdad=False
     def __init__(self,nombre,apellido,edad):
         super().__init__(nombre,apellido)
         self.__edad = edad
         if(edad>=18):
-            self.menorEdad=False
+            self.__menorEdad=False
+        else:
+            self.__menorEdad=True
 
     def getEdad(self):
         return self.__edad
@@ -42,9 +43,9 @@ class Modulo():
             self.__anyo=anyo
         self.__horas=horas
         if optativo ==True or optativo ==False:
-            self.__optativo=False
-        else:
             self.__optativo=optativo
+        else:
+            self.__optativo=False
 
     def getNombre(self):
         return self.__nombre
@@ -54,8 +55,10 @@ class Modulo():
         return self.__horas
     def getOptativo(self):
         aux=""
-        if(self.__optativo):
+        if(self.__optativo is True):
             aux= "Optativo"
+        else:
+            aux="No Optativo"
         return aux
 
 class Ciclo:
@@ -84,8 +87,6 @@ class Ciclo:
             self.__modulosSegundo.append(modulo)
 
 class Grupo:
-    listaAlumnos=[]
-    tutor=None
     def __init__(self,nombre,ciclo,curso,numAlumnos):
         self.__nombre = nombre
         self.__ciclo = ciclo
@@ -94,36 +95,33 @@ class Grupo:
         else:
             self.__curso = curso
         self.__numAlumnos = numAlumnos
+        self.__listaAlumnos=[]
+        self.__tutor=None
 
     def setAlumnos(self,alumno):
-        self.listaAlumnos.append(alumno)
-    def eliminarAlumno(self,alumno):
-        if alumno in self.listaAlumnos:
-            self.listaAlumnos.remove(alumno)
-            print("Alumno eliminado")
-        else:
-            print("Alumno no encontrado")
+        self.__listaAlumnos.append(alumno)
 
     def setTutor(self,tutor):
-        self.tutor=tutor
+        self.__tutor=tutor
 
     def getTutor(self):
-        return self.tutor.getNombre() + " " + self.tutor.getApellido()
+        return self.__tutor.getNombre() + " " + self.__tutor.getApellido()
 
     def getAlumnos(self):
         lista=""
-        for i in self.listaAlumnos:
+        for i in self.__listaAlumnos:
             lista+=i.getNombre()+" "+i.getApellido()+"\n"+"\t"
         return lista
 
     def addAlumno(self,alumno):
-        self.listaAlumnos.append(alumno)
+        self.__listaAlumnos.append(alumno)
     def eliminarAlumno(self,alumno):
         esta=False
-        for i in self.listaAlumnos:
+        for i in self.__listaAlumnos:
             if(i.getNombre()==alumno.getNombre()):
-                self.listaAlumnos.remove(alumno)
-        if(esta):
+                self.__listaAlumnos.remove(alumno)
+                esta=True
+        if(esta is False):
             print("Alumno no encontrado")
         else:
             print("Alumno eliminado")
@@ -141,7 +139,7 @@ class Grupo:
         informe = f"""
     Grupo {self.__nombre}
     =========================
-    Ciclo: {self.__ciclo}
+    Ciclo: {self.__ciclo.getNombre()} {self.__ciclo.getGrado()}
     Curso: {self.__curso}
     Tutor: {self.getTutor()}
     Número Alumnos: {self.__numAlumnos}

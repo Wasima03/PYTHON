@@ -13,7 +13,7 @@ print()
 for clave,valor in diccionario.items():
     print(clave,":",valor)
 print()
-print(diccionario.get("Edad")) #si pongo una clave queno existe no salta error solo "none"
+print(diccionario.get("Edad")) #si pongo una clave que no existe no salta error solo "None"
 print(diccionario["Edad"]) #si pongo una clave que no existe salta error
 diccionario["Edad"]=67
 print(diccionario)

@@ -33,7 +33,7 @@ class gestionNotas():
             if i.getTitulo()==titulo:
                 self.__lista.remove(i)
                 esta=True
-        if(esta):
+        if(esta is True):
             print("Nota eliminada")
         else:
             print("Nota no encontrada")
