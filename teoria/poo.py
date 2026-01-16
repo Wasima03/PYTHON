@@ -1,4 +1,4 @@
-"""
+
 class Perro:
 
     def __init__(self,secreto,secretisimo,nombre="Booby"): #valor del parámetro por defecto
@@ -15,7 +15,7 @@ mascota2._secreto="Engendro del demonio"
 print(mascota2._secreto)
 mascota2._Perro__secretisimo="Rata azmiclera"
 print(mascota2._Perro__secretisimo)
-"""
+
 class Perro:
     numPerros=0
     def __init__(self, nombre="Bobby"):

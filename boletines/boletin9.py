@@ -1,5 +1,5 @@
 #1-2-3
-"""
+
 def mostrarDatos(diccionario):
     for clave,valor in diccionario.items():
         print(clave.replace(",",""), "(", valor, ")")
@@ -48,7 +48,7 @@ diccionario=dict()
 for i in palabras:
    diccionario[i]=texto.count(i)
 print(diccionario)
-"""
+
 #5
 diccionario={"Aguacate":4.35,"Mandarina":2.60,"Kiwi":3.75,"Naranja":1.80}
 print(diccionario.get("rg", False))

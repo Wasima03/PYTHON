@@ -27,7 +27,7 @@ print(objetoB.getNombre())
 -----------------------------------------------------------
 """
 
-"""class ClaseA:
+class ClaseA:
     def __init__(self):   #constructor
         self.nombre="Clase A"
         self.codigo=55
@@ -51,12 +51,12 @@ objeetob=ClaseB()
 print(objetoa.nombre)
 print(objeetob.nombre)
 print(objeetob.subclase)
---------------------------------------------------
-"""
+#--------------------------------------------------
 
 
 
-"""#HERENCIA MÚLTIPLE
+
+#HERENCIA MÚLTIPLE
 
 class ClaseA:
     def __init__(self):   #constructor
@@ -95,8 +95,8 @@ objetod=ClaseD()
 print(objetod.nombre)
 objetoc.queSoy()
 objetod.queSoy()
-------------------------------------------------------
-"""
+#------------------------------------------------------
+
 
 
 
