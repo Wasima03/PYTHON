@@ -1,7 +1,7 @@
 #EJERCICIO 1
 from sympy.parsing.sympy_parser import null
 
-try:
+"""try:
     def compararFicheros(fichero1,fichero2):
         igual=False
         f1=open(fichero1)
@@ -39,7 +39,7 @@ print("Mujeres: ", mujeres)
 print("Estatura media: ", round((altura / (hombres + mujeres)),2))
 
 
-"""for i in range (len(lista)):
+for i in range (len(lista)):
     if i==0 or i%2==0:
         if lista[i] == 'Hombre':
             hombres+=1
@@ -48,7 +48,7 @@ print("Estatura media: ", round((altura / (hombres + mujeres)),2))
     else:
         t=float(lista[i])
         t+=altura
-"""
+
 
 #EJERCICIO 3-4
 
@@ -72,7 +72,7 @@ while True:
     if linea=="":
         break
 #EJERCICIO 3
-"""
+
 for i in cuentasValidas:
     codigosV+=1
     print("País: ",i[:2])
@@ -84,9 +84,45 @@ print("Hay ",codigosV," correctos y ",codigos-codigosV," codigos incorrectos")
 """
 #EJERCICIO 4
 
+#EJERCICIO 5
+def barajarDatos(fichero):
+    nombres=[]
+    apellidos=[]
+    nif=[]
+    try:
+        with open(fichero,'r+') as f:
+            datos=f.read()
+            datos=datos.replace("\n"," ")
+            datos=datos.split(" ")
+            aux=0
+            for i in range(len(datos)-1):
+                aux+=i
+                nombres.append(datos[i])
+                apellidos.append(datos[i+1])
+                if datos[i].isalnum():
+                    nif.append(datos[i])
+            print(nombres)
+            print(apellidos)
+            print(nif)
+    except FileNotFoundError:
+        print("Error, el fichero no es correcto")
+
+barajarDatos("clientes.txt")
 
 
+#EJERCICIO 7
+nombre=input("Introduce tu nobre: ")
+def delitos(nombre,fichero):
+    try:
+        with open(fichero,'r+') as f:
+            linea=f.readline()
+            while linea!="":
+                f.readline()
+                if(linea==nombre):
 
+
+    except FileNotFoundError:
+        print("Error, el fichero no es correcto")
 
 
 
