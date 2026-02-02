@@ -3,6 +3,8 @@
     #r-lectura      #t-texto
     #w-escritura    #b-binario
     #a-append       #+-modo lectura y escritura combinado con otras letras
+    #r+-lee y escribe sin borrar, añade al final
+    #w+- lee y escribe borrando todo al abrir el fichero
 
 
     #texto=fichero.read()
