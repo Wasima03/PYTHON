@@ -1,5 +1,7 @@
 import pickle
-
+#pickle.load---deserializa un texto binario a objeto otra vez
+#pickle.dump ---- serializa objeto a texto binario
+#ab-----escribe en fichero pero no borra append
 
 def Persona():
     def __init__(self,nombre,edad):

@@ -1,6 +1,6 @@
 #EJERCICIO 1
 
-"""try:
+try:
     def compararFicheros(fichero1,fichero2):
         igual=False
         f1=open(fichero1)
@@ -310,30 +310,384 @@ def corregirExamen(ficheroSoluciones,ficheroRespuestas):
         print("Fichero de soluciones no válido.")
 corregirExamen("soluciones.txt","respuestas.txt")
 
-"""
+
+
 #EJERCICIO 13
 nombre=input("Introduce el nombre: ")
+password = input("Introduce la contraseña: ")
 try:
-    with open("usuarios",'r') as f:
-        lineas=f.readlines()
-        lineas=lineas.strip().split(":")
-        usuario=lineas[0]
-        contrseña=lineas[1]
+    with open('usuarios.txt', 'r') as f:
         d=dict()
-        for i in range (len(usuario)):
-            d=(usuario[i]=contrseña[i])
+        usuarios=[]
+        contraseñas=[]
+        lineas=f.readlines()
+        if len(lineas)>0:
+            for i in lineas:
+                datos=i.strip().split(":")
+                usuarios.append(datos[0])
+                contraseñas.append(datos[1])
+            for i in range (len(usuarios)):
+                d[usuarios[i]]=contraseñas[i]
 
+            userEncontrado=False
+            for clave,valor in d.items():
+                if clave==nombre:
+                    userEncontrado=True
+                    if valor==password:
+                        print("Usuario y contraseña válidos.")
+                    else:
+                        print("Contraseña no válida.")
+            if(userEncontrado==False):
+                    print("Usuario no encontrado.")
+        else:
+            print("Fichero vacío.")
+except:
+        print("Fichero inexistente o imposible acceder a él.")
 
-        d=dict(usuario=contraseña)
+#EJERCICIO 14
+def grabarCuenta(user, password):
+    try:
+        with open("usuarios.txt",'a') as f:
+            f.write("\n"+user+":"+password)
+    except:
+        print("Fichero inexistente o imposible acceder a él.")
 
+nombre = input("Introduce el usuario: ")
+password1=input("Introduce la contraseña: ")
+password2=input("Vuelve a introduce la contraseña: ")
 
+if password1==password2:
+    print("Cuenta de usuario grabada correctamente.")
+    grabarCuenta(nombre,password1)
+else:
+    print("Las contraseñas no son iguales. No se puede grabar la nueva cuenta.")
 
+from boletines.Consideraciones import Consideraciones
 
+#EJERCICIO 15
+try:
+    with open("usuarios.txt",'r') as f:
+        lineas = f.readlines()
+        for i in lineas:
+            c=Consideraciones(i)
+            print("Nombre:",c.getUser())
+            print("Contraseña:",c.getPassword())
+            print("Fortaleza de la contraseña:",c.getSolidez(),"\n")
+except:
+    print("Fichero inexistente o imposible acceder a él.")
 
+from boletines.Consideraciones import Consideraciones
 
+#EJERCICIO 16
+try:
+    with open("usuarios.txt",'r') as f:
+        listaObjetos=[]
+        lineas = f.readlines()
+        for i in lineas:
+            c=Consideraciones(i)
+            listaObjetos.append(c)
+    with open("login.bin","wb") as f2:
+        print("Fichero origen: ",f)
+        print("Fichero destino:",f2)
+        print("Número:",len(listaObjetos))
+        print("Listado: ")
+
+        for i in listaObjetos:
+            cadena=("Nombre:"+i.getUser()+"\n"+"Contraseña:"+i.getPassword()+"\n"+"Fortaleza de la contraseña:"+i.getSolidez()+"\n"+"\n")
+            f2.write(cadena.encode())
+    with open("login.bin","rb") as f3:
+        contenido=f3.read().decode()
+        print(contenido)
+except:
+    print("Fichero inexistente o imposible acceder a él.")
+
+#EJERCICIO 17
+import re
+try:
+    patron=re.compile(r"^"
+    r"([A-Za-z]+(?: [A-Za-z]+)*), "
+    r"([A-Za-z]+(?: [A-Za-z]+)*)"
+    r";"
+    r"([A-Za-z0-9 ]+)"
+    r";"
+    r"(\d+(?:\.\d+)?)"
+    r"$")
+
+    with open("trabajadores.txt","r",encoding="UTF-8") as f:
+        lineas = f.readlines()
+    with open("trabajadoresValidos.txt","w+") as f2:
+        for i in lineas:
+            i=i.strip()
+            if re.fullmatch(patron,i):
+                f2.write(i+"\n")
+            else:
+                print(i)
+except:
+    print("Fichero inexistente o imposible acceder a él.")
+
+#EJERCICIO 18
+try:
+    with open("trabajadoresValidos.txt", "r",encoding="UTF-8") as f:
+        lineas = f.readlines()
+    with open("trabajadoresValidos.txt","a") as f2:
+        for i in lineas:
+            i = i.strip().split(";")
+            datos=i[0].split(",")
+            nombre=datos[0]
+            apellido=datos[1]
+
+            while(True):
+                edad= int(input(nombre + "," + apellido + ".Edad: "))
+                if edad > 18 and edad < 67:
+                    break;
+            f2.write(";"+str(edad))
 
 except:
-        print("Fichero de soluciones no válido.")
+    print("Fichero inexistente o imposible acceder a él.")
+
+
+#ALTERNATIVA PARA QUE LAS EDADES SE AÑADAN AL FINAL DE CADA LINEA Y NO AL FINAL DEL FICHERO
+#HAY QUE LEER, MODIFICAR Y LUEGO SOBREESCRIBIR
+
+try:
+    with open("trabajadoresValidos.txt", "r", encoding="utf-8") as f:
+        lineas = f.readlines()
+
+    nuevas_lineas = []
+
+    for linea in lineas:
+        linea = linea.strip()
+        partes = linea.split(";")
+
+        datos = partes[0].split(",")
+        apellido = datos[0].strip()
+        nombre = datos[1].strip()
+
+        while True:
+            edad = int(input(nombre + " " + apellido + ". Edad: "))
+            if 18 < edad < 67:
+                break
+            else:
+                print("Edad no válida (19-66).")
+
+        nuevas_lineas.append(linea + ";" + str(edad) + "\n")
+
+    # Sobrescribimos el fichero
+    with open("trabajadoresValidos.txt", "w", encoding="utf-8") as f:
+        f.writelines(nuevas_lineas)
+
+except FileNotFoundError:
+    print("Fichero inexistente o imposible acceder a él.")
+except ValueError:
+    print("La edad debe ser un número.")
+
+from boletines.Empleado import Empleado
+
+#EJERCICIO 19
+try:
+    with open("trabajadoresValidos.txt","r",encoding="UTF-8") as f:
+        lineas=f.readlines()
+        for i in lineas:
+            i=i.strip()
+            e = Empleado(i)
+            print(e.mostrar())
+
+except FileNotFoundError:
+    print("Fichero inexistente.")
+
+#EJERCICIO 20
+import pickle
+from boletines.Empleado import Empleado
+def grabarEmpleado(fichero,empleado):
+    try:
+        with open(fichero,"ab") as f:
+            pickle.dump(empleado,f)
+        with open(fichero,"rb") as f:
+            try:
+                while(True):
+                    objeto=pickle.load(f)
+                    print(objeto.mostrar())
+            except EOFError: #END OF FILE
+                pass
+    except FileNotFoundError:
+        print("Fichero inválido.")
+
+e=Empleado("Wasima, El Ouastani Aznag; Programadora Junior; 3450;20")
+grabarEmpleado("nuevo.bin",e)
+
+#EJERCICIO 21
+import re
+entrada="pokemon_in.txt"
+salida="pokemon_out.txt"
+validos=0
+patron=r"^[A-Za-z .]+$"
+try:
+    pokemons=[]
+    with open(entrada,"r") as f:
+        lista=f.readlines()
+    with open(salida,"w") as f2:
+        for i in lista:
+            pokemons=i.strip().split("; ")
+            if len(pokemons) >3:
+                print("Número de pokemons excedido en linea:",i)
+            else:
+                for p in pokemons:
+                    datos=p.split(" ")
+                    num=datos[0]
+                    nombre=datos[1]
+                if int(num) >1 and int(num)<151:
+                    if re.fullmatch(patron,nombre):
+                        f2.write(i)
+                        validos+=1
+                    else:
+                        print("El nombr del pokemon no es válido en linea: ",i)
+                else:
+                    print("Número de pokemon no válidoen linea: ",i)
+        print("Pokemons correctos: ",validos)
+except FileNotFoundError:
+    print("Error fichero.")
+
+#EJERCICIO 22
+# Fichero de entrada
+entrada = "pokemon_in.txt"
+
+# Diccionario principal: clave = número o nombre en minúsculas
+pokedex = {}
+
+# Leer el fichero y construir la pokedex
+with open(entrada, "r", encoding="utf-8") as f:
+    for linea in f:
+        linea = linea.strip()
+        if not linea:
+            continue
+
+        pokemons = []
+        partes = linea.split("; ")
+        for idx, p in enumerate(partes):
+            num_str, nombre = p.split(" ", 1)
+            num = int(num_str)
+            # Evoluciona de y evoluciona en
+            de = None if idx == 0 else partes[idx-1]
+            en = None if idx == len(partes)-1 else partes[idx+1]
+
+            # Guardar info en diccionario
+            info = {"num": num, "nombre": nombre, "de": de, "en": en}
+            # Clave por número
+            pokedex[num] = info
+            # Clave por nombre en minúsculas
+            pokedex[nombre.lower()] = info
+
+# Función para mostrar la información de un Pokémon
+def mostrar_pokemon(entrada_usuario):
+    # Determinar si es número o nombre
+    if entrada_usuario.isdigit():
+        clave = int(entrada_usuario)
+    else:
+        clave = entrada_usuario.lower()
+
+    if clave in pokedex:
+        p = pokedex[clave]
+        print(f"{p['nombre']}. Su número de la Pokedex es {p['num']}")
+        # Evoluciona de
+        if p["de"]:
+            num_de, nombre_de = p["de"].split(" ", 1)
+            print(f"Evoluciona de {nombre_de} ({num_de})", end=". ")
+        else:
+            print("No evoluciona de ningún otro.", end=". ")
+        # Evoluciona en
+        if p["en"]:
+            num_en, nombre_en = p["en"].split(" ", 1)
+            print(f"Evoluciona en {nombre_en} ({num_en})")
+        else:
+            print("No evoluciona a ningún otro")
+    else:
+        print("Ese Pokemon no está registrado en la pokedex")
+
+# Interacción con el usuario
+while True:
+    entrada_usuario = input("Introduce el pokemon en el que estás interesado: ").strip()
+    if entrada_usuario.lower() == "exit":
+        print("Gracias por consultar la pokedex")
+        break
+    # Validar entrada
+    if entrada_usuario.replace(" ", "").replace(".", "").isalpha() or entrada_usuario.isdigit():
+        mostrar_pokemon(entrada_usuario)
+    else:
+        print("Eso no parece corresponder a un nombre de pokemon o código de la pokedex")
+
+from boletines.Pokemon import Pokemon
+
+#EJERCICIO 23
+# Crear pokemons
+pokemon1 = Pokemon(10, "Caterpie")
+pokemon2 = Pokemon(11, "Metapod")
+pokemon3 = Pokemon(12, "Butterfree")
+
+# Definir evoluciones
+pokemon1.evoluciona(pokemon2)
+pokemon2.evoluciona(pokemon3)
+
+# Definir tipos
+pokemon1.tipo("Bicho")
+pokemon2.tipo("Bicho")
+pokemon3.tipo("Bicho")
+pokemon3.tipo("Volador")
+
+# Mostrar información
+pokemon1.mostrar()
+pokemon2.mostrar()
+pokemon3.mostrar()
+
+#EJERCICIO 24
+import pickle
+import os
+
+def grabarFichero(fichero, *pokemons):
+    lista_total = []
+
+    # Leer el fichero si existe y tiene contenido
+    if os.path.exists(fichero) and os.path.getsize(fichero) > 0:
+        try:
+            with open(fichero, "rb") as f:
+                lista_total = pickle.load(f)
+        except:
+            print("Error: fichero inválido o corrupto")
+            return
+
+    # Añadir los nuevos Pokémon
+    lista_total.extend(pokemons)
+
+    # Guardar todo de nuevo
+    with open(fichero, "wb") as f:
+        pickle.dump(lista_total, f)
+
+import random
+
+def combate(fichero):
+    # Comprobar existencia y contenido
+    if not os.path.exists(fichero):
+        print("Error: fichero no encontrado")
+        return
+
+    try:
+        with open(fichero, "rb") as f:
+            lista = pickle.load(f)
+    except:
+        print("Error: contenido inválido")
+        return
+
+    if len(lista) < 4:
+        print("Error: se necesitan al menos 4 pokemons para el combate")
+        return
+
+    # Elegir 4 Pokémon distintos
+    seleccionados = random.sample(lista, 4)
+
+    jugador1 = seleccionados[:2]
+    jugador2 = seleccionados[2:]
+
+    print(f"El jugador 1 combate con {jugador1[0]} y {jugador1[1]}")
+    print(f"El jugador 2 combate con {jugador2[0]} y {jugador2[1]}")
 
 
 

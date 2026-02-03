@@ -2,8 +2,11 @@
 """
     #r-lectura      #t-texto
     #w-escritura    #b-binario
+    #wb - escribir en binario
+    #rb - leer en binario
+    #ab---escribe append sin borrar y crea si no existe
     #a-append       #+-modo lectura y escritura combinado con otras letras
-    #r+-lee y escribe sin borrar, añade al final
+    #r+-lee y escribe sin borrar, añade al principio, machacando la primera linea
     #w+- lee y escribe borrando todo al abrir el fichero
 
 
